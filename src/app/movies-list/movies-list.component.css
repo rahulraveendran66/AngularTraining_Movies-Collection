@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+.title{
+  font-size: 3em;
+  font-family: Georgia;
+  text-align: center;
+}
+
+.button-container {
+  padding-bottom: 16px;
+}
+
+.tableRow {
+  cursor: pointer;
+}
+
+.tableRow:hover {
+  background-color: #f1e4e8da;
+}
+
+.button + .button {
+  margin-left: 8px;
+}
+
+.deleteIcon{
+  margin-left: 8px;
+}

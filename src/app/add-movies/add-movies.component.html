@@ -1,0 +1,44 @@
+
+<form (ngSubmit)="onSubmit()">
+<div class="form-group">
+    <label for="name">Enter a Movie Name</label>
+    <input type="text" class="form-control" id="movie"
+           required
+           [(ngModel)]="movie.movie" name="movie">
+</div>
+
+<div class="form-group">
+  <label for="name">Enter Actor</label>
+  <input type="text" class="form-control" id="actor"
+         required
+         [(ngModel)]="movie.actor" name="actor">
+</div>
+
+<div class="form-group">
+  <label for="name">Enter Director</label>
+  <input type="text" class="form-control" id="director"
+         required
+         [(ngModel)]="movie.director" name="director">
+</div>
+
+<div class="form-group">
+  <label for="name">Enter Language</label>
+  <input type="text" class="form-control" id="language"
+         required
+         [(ngModel)]="movie.language" name="language">
+</div>
+
+<div class="form-group">
+  <label for="name">Enter Year of Relaese</label>
+  <input type="text" class="form-control" id="year"
+         required
+         [(ngModel)]="movie.year" name="year">
+</div>
+<button type="submit" class="btn btn-success">Submit</button>
+
+
+<div class="button">
+  <!-- <button mat-raised-button color="accent" (click)='add()'>Save</button> -->
+  <button mat-raised-button color="accent" (click)='goBack()'>Go Back</button>
+</div>
+</form>
