@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movies } from './movies';
+import { Actor, Director, Movies } from './movies.model';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,36 @@ export class MoviesService {
     .pipe (
       tap(_ => console.log("Fetched all movies list"))
     );
+
+  }
+
+  getMovie(id:Number) : Observable<Movies> {
+    return this.http.get<Movies>(this.baseUrl+"movies"+id)
+  }
+
+  getActors() : Observable<Actor[]>{
+    return this.http.get<Actor[]>(this.baseUrl+"actor")
+    .pipe (
+      tap(_ => console.log("Fetched actor's details"))
+    );
+  }
+
+  getDirectors() : Observable<Director[]>{
+    return this.http.get<Director[]>(this.baseUrl+"director")
+    .pipe (
+      tap(_ => console.log("Fetched director's details"))
+    );
+  }
+
+  updateMovies(id:Number , value:Movies) : Observable<Movies>{
+    return this.http.put<Movies>(this.baseUrl+"movies/"+id,value)
+    .pipe (
+      tap(_ => console.log("Successfully updated"))
+    );
+  }
+
+  deleteMovies(id:number) : Observable<any>{
+    return this.http.delete(this.baseUrl+"movies/"+id);
 
   }
 }

@@ -1,14 +1,14 @@
 
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import {  Movies } from '../movies';
+import {  Movies } from '../movies.model';
 import { Router } from '@angular/router';
 import {MatTable} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { MoviesService } from '../movies.service';
 
 import { DetailsComponent } from '../details/details.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -31,8 +31,12 @@ export class MoviesListComponent implements OnInit {
   constructor( private moviesService : MoviesService,public dialog: MatDialog ,private router: Router) { }
 
   openDialog(movie: Movies){
-    this.dialog.open(DetailsComponent,{data :movie})
+    // this.dialog.open(DetailsComponent,{data :movie});
+    const dialogRef: MatDialogRef<DetailsComponent> = this.dialog.open(DetailsComponent,{data :movie});
+    dialogRef.componentInstance.updateEvent.subscribe(()=>this.getMoviesList());
   }
+
+
 
   getMoviesList() :void {
     this.moviesService.getMoviesList()
@@ -43,11 +47,22 @@ export class MoviesListComponent implements OnInit {
 
   }
 
+  deleteMoviesById(id:number){
+    this.moviesService.deleteMovies(id)
+    .subscribe(data => {
+      console.log(data);
+      this.getMoviesList();
+
+    });
+
+  }
+
   navigateToAddMovies() : void{
     this.router.navigateByUrl('add-movies');
   }
 
   ngOnInit(): void {
+    this.getMoviesList();
   }
 
 }

@@ -9,10 +9,15 @@ table {
 }
 
 .button-container {
-  padding-bottom: 16px;
+  padding-bottom: 1mm;
+  margin-left: 2em;
 }
 
-.tableRow {
+.tableContainer {
+  margin: 2em;
+}
+
+.deleteIcon {
   cursor: pointer;
 }
 
@@ -20,7 +25,7 @@ table {
   background-color: #f1e4e8da;
 }
 
-.button + .button {
+.button + .button + .button{
   margin-left: 8px;
 }
 

@@ -1,44 +1,58 @@
-
+<h2>Add New Movies</h2>
 <form (ngSubmit)="onSubmit()">
 <div class="form-group">
-    <label for="name">Enter a Movie Name</label>
-    <input type="text" class="form-control" id="movie"
+  <mat-form-field appearance="outline">
+    <mat-label>Enter a Movie name</mat-label>
+    <input matInput placeholder="Movie" class="form-control" id="movie"
            required
-           [(ngModel)]="movie.movie" name="movie">
+           [(ngModel)]="movie.mName" name="movie">
+  </mat-form-field>
 </div>
 
 <div class="form-group">
-  <label for="name">Enter Actor</label>
-  <input type="text" class="form-control" id="actor"
-         required
-         [(ngModel)]="movie.actor" name="actor">
+  <mat-form-field appearance="outline">
+  <mat-label>Enter Actor</mat-label>
+  <mat-select class="listContainer" [(value)]="movie.actor">
+    <mat-option *ngFor="let actor of actors " [value]="actor">
+      {{actor.aName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 </div>
 
 <div class="form-group">
-  <label for="name">Enter Director</label>
-  <input type="text" class="form-control" id="director"
-         required
-         [(ngModel)]="movie.director" name="director">
+  <mat-form-field appearance="outline">
+  <mat-label>Enter Director</mat-label>
+  <mat-select class="listContainer" [(value)]="movie.director">
+    <mat-option *ngFor="let director of directors " [value]="director">
+      {{director.dName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 </div>
 
 <div class="form-group">
-  <label for="name">Enter Language</label>
-  <input type="text" class="form-control" id="language"
+  <mat-form-field appearance="outline">
+    <mat-label>Enter Language</mat-label>
+    <input matInput placeholder="Language" class="form-control" id="language"
          required
          [(ngModel)]="movie.language" name="language">
+  </mat-form-field>
 </div>
 
 <div class="form-group">
-  <label for="name">Enter Year of Relaese</label>
-  <input type="text" class="form-control" id="year"
+  <mat-form-field appearance="outline">
+    <mat-label>Enter year of Release</mat-label>
+    <input matInput placeholder="Year" class="form-control" id="year"
          required
          [(ngModel)]="movie.year" name="year">
+    </mat-form-field>
 </div>
-<button type="submit" class="btn btn-success">Submit</button>
-
+<!-- <button type="submit" class="btn btn-success">Submit</button> -->
+</form>
 
 <div class="button">
-  <!-- <button mat-raised-button color="accent" (click)='add()'>Save</button> -->
+  <button mat-raised-button color="accent" (click)='save()'>Save</button>
   <button mat-raised-button color="accent" (click)='goBack()'>Go Back</button>
 </div>
-</form>
+

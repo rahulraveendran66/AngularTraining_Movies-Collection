@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { MoviesService } from '../movies.service';
-import { Movies } from '../movies';
+import { Movies,Actor,Director } from '../movies.model';
 
 @Component({
   selector: 'app-add-movies',
@@ -11,10 +11,12 @@ import { Movies } from '../movies';
 })
 export class AddMoviesComponent implements OnInit {
 
-  movie: Movies={}//{ movie:'',actor:'',director:'',language:'', year:2010 };
-  // model = ['movie','actor','director','language','year'];
+  movie: Movies={}
+  actors: Actor[]=[]
+  directors: Director[]=[]
+
   submitted = false;
-  constructor(private moviesService: MoviesService,private location:Location) { }
+  constructor(private moviesService: MoviesService, private actorService: MoviesService,private directorService: MoviesService,private location:Location) { }
 
   goBack(): void {
     this.location.back();
@@ -22,7 +24,7 @@ export class AddMoviesComponent implements OnInit {
 
   save(): void{
     this.moviesService.createMovies(this.movie)
-    .subscribe();
+    .subscribe(()=>this.goBack());
   }
 
   onSubmit(){
@@ -30,6 +32,20 @@ export class AddMoviesComponent implements OnInit {
     this.save();
   }
 
+  getActors(): void{
+    this.actorService.getActors()
+    .subscribe(actors=>{
+      console.log(actors);
+      this.actors=actors;});
+  }
+
+  getDirectors(): void{
+    this.directorService.getDirectors()
+    .subscribe(directors=>this.directors=directors);
+  }
+
   ngOnInit(): void {
+    this.getActors();
+    this.getDirectors();
   }
 }

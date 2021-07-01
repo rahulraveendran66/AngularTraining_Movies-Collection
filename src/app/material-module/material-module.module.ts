@@ -9,6 +9,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   exports: [
     MatTableModule,
@@ -30,7 +32,9 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
+
   ]
 })
 export class MaterialModuleModule { }
