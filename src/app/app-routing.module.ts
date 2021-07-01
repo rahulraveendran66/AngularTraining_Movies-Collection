@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { AddMoviesComponent } from './add-movies/add-movies.component';
 import { DetailsComponent } from './details/details.component';
-import { UpdateMoviesComponent } from './update-movies/update-movies.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/movies', pathMatch: 'full'},

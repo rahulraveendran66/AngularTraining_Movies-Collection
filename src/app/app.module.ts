@@ -9,7 +9,7 @@ import { AddMoviesComponent } from './add-movies/add-movies.component';
 import { DetailsComponent } from './details/details.component';
 import { MaterialModuleModule } from './material-module/material-module.module';
 import { FormsModule } from '@angular/forms';
-import { UpdateMoviesComponent } from './update-movies/update-movies.component';
+
 
 
 
@@ -19,7 +19,7 @@ import { UpdateMoviesComponent } from './update-movies/update-movies.component';
     MoviesListComponent,
     AddMoviesComponent,
     DetailsComponent,
-    UpdateMoviesComponent
+
   ],
   imports: [
     BrowserModule,
