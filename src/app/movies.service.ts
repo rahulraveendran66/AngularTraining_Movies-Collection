@@ -21,12 +21,15 @@ export class MoviesService {
     );
     }
 
-  getMoviesList() : Observable<Movies[]>{
-    return this.http.get<Movies[]>(this.baseUrl+"movies")
+  getMoviesList(search: string) : Observable<Movies[]>{
+    let endPoint: string = `movies`;
+    if (search) {
+      endPoint = endPoint + `?search=${search}`;
+    }
+    return this.http.get<Movies[]>(this.baseUrl+ endPoint)
     .pipe (
       tap(_ => console.log("Fetched all movies list"))
     );
-
   }
 
   getMovie(id:Number) : Observable<Movies> {
@@ -58,4 +61,6 @@ export class MoviesService {
     return this.http.delete(this.baseUrl+"movies/"+id);
 
   }
+
+
 }

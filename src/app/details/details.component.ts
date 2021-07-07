@@ -12,6 +12,7 @@ export class DetailsComponent implements OnInit {
 
   value:Movies={}
   submitted=false;
+  public isupdate!: boolean;
   @Output() updateEvent=new EventEmitter<void>()
   constructor(@Inject(MAT_DIALOG_DATA) public data: Movies ,private moviesService : MoviesService) { }
 
@@ -25,10 +26,10 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  // onSubmit(){
-  //   this.submitted=true;
-  //   this.update();
-  // }
+  edit(){
+    this.isupdate=true;
+
+  }
 
   ngOnInit(): void {
     this.value= JSON.parse(JSON.stringify(this.data));

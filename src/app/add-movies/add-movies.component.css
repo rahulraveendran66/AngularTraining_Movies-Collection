@@ -1,8 +1,47 @@
-button {
-  margin-left: 8px;
+
+
+.formContainer {
+  margin: auto;
+  background-color: #dcddeb;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 600px;
+  padding: 20px;
+  width: 320px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  left: 40%;
 
 }
+
+.form-group{
+  margin-top: 30px;
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
+
+.mat-form-field {
+  background-color: rgb(215, 193, 235);
+}
+
+.buttonContainer {
+  margin-top: 40px;
+}
+
+.button + .button {
+  margin-left: 8px;
+}
+
 
 .listContainer {
   width: 150px;
 }
+
+/* .formContainer {
+  margin: 10em;
+  background-color:burlywood;
+
+} */

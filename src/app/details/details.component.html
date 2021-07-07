@@ -1,31 +1,54 @@
 
 <!-- <h1 mat-dialog-title>Details</h1> -->
+<div>
+<ng-template #movieblock>
 <div mat-dialog-content>
+  <div class="movieContainer">
   <ul>
-    <h2>Actor's Details</h2>
-    <li><span><label >Name:</label></span><span> {{ data.actor?.aName}}</span></li>
-    <li><span><label >Number Of Hits:</label></span><span> {{ data.actor?.hits}}</span></li>
-    <li><span><label >Number Of Flops:</label></span><span> {{ data.actor?.flops}}</span></li>
-    <li><span><label >Industry:</label></span><span>{{ data.actor?.industry}}</span></li>
-  </ul>
-
-  <ul>
-    <h2>Director's Details</h2>
-    <li><span><label >Name:</label></span><span> {{ data.director?.dName}}</span></li>
-    <li><span><label >Number Of Hits:</label></span><span> {{ data.director?.hits}}</span></li>
-    <li><span><label >Number Of Flops:</label></span><span> {{ data.director?.flops}}</span></li>
-    <li><span><label >Industry:</label></span><span> {{ data.director?.industry}}</span></li>
+    <h1>Movie's Details</h1>
+    <li><span><label >Name: </label> {{value.mName}} </span></li>
+    <li><span><label >Language: </label> {{value.language}} </span></li>
+    <li><span><label >Year: </label> {{value.year}} </span></li>
   </ul>
 </div>
-<!-- <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div> -->
+  <button color="primary" class="editContainer" mat-button  (click)="edit()">Edit</button>
 
+
+  <div class="actorContainer">
+  <ul>
+    <h1>Actor's Details</h1>
+    <li><span><label >Name:</label></span><span> {{ value.actor?.aName}}</span></li>
+    <li><span><label >Number Of Hits:</label></span><span> {{ value.actor?.hits}}</span></li>
+    <li><span><label >Number Of Flops:</label></span><span> {{ value.actor?.flops}}</span></li>
+    <li><span><label >Industry:</label></span><span>{{ value.actor?.industry}}</span></li>
+  </ul>
+</div>
+
+  <div class="directorContainer">
+  <ul>
+    <h1>Director's Details</h1>
+    <li><span><label >Name:</label></span><span> {{ value.director?.dName}}</span></li>
+    <li><span><label >Number Of Hits:</label></span><span> {{ value.director?.hits}}</span></li>
+    <li><span><label >Number Of Flops:</label></span><span> {{ value.director?.flops}}</span></li>
+    <li><span><label >Industry:</label></span><span> {{ value.director?.industry}}</span></li>
+  </ul>
+</div>
+</div>
+
+<div mat-dialog-actions>
+  <mat-icon matSuffix class="closeContainer" mat-button mat-dialog-close>highlight_off</mat-icon>
+</div>
+</ng-template>
+</div>
+
+
+<div *ngIf ="isupdate ; else movieblock" >
+  <div class="updateContainer">
 <h1 mat-dialog-title>Update Movie Details</h1>
 <div mat-dialog-content>
 <form >
   <div>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="fill">
     <mat-label>Enter a Movie name</mat-label>
     <input matInput placeholder="Movie" class="form-control" id="movie"
            required
@@ -34,7 +57,7 @@
 </div>
 
 <div class="form-group">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="fill">
     <mat-label>Enter Language</mat-label>
     <input matInput placeholder="Language" class="form-control" id="language"
          required
@@ -43,7 +66,7 @@
 </div>
 
 <div class="form-group">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="fill">
     <mat-label>Enter year of Release</mat-label>
     <input matInput placeholder="Year" class="form-control" id="year"
          required
@@ -54,6 +77,9 @@
 </form>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)='update(value?.id || -1)' [mat-dialog-close]>Update</button>
-  <button mat-button mat-dialog-close>Close</button>
+  <button color="accent" mat-button (click)='update(value?.id || -1)' >Update</button>
+  <mat-icon matSuffix class="backContainer" (click)="isupdate=false">arrow_back</mat-icon>
 </div>
+</div>
+</div>
+

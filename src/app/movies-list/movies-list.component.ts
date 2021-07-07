@@ -20,6 +20,7 @@ export class MoviesListComponent implements OnInit {
 
 
   movies: Movies[]=[];
+  search:any;
   displayArray = [ 'movie', 'actor', 'director', 'language','year','action'];
   dataSource =new MatTableDataSource(this.movies);
 
@@ -31,38 +32,42 @@ export class MoviesListComponent implements OnInit {
   constructor( private moviesService : MoviesService,public dialog: MatDialog ,private router: Router) { }
 
   openDialog(movie: Movies){
-    // this.dialog.open(DetailsComponent,{data :movie});
-    const dialogRef: MatDialogRef<DetailsComponent> = this.dialog.open(DetailsComponent,{data :movie});
-    dialogRef.componentInstance.updateEvent.subscribe(()=>this.getMoviesList());
+    const dialogRef: MatDialogRef<DetailsComponent> = this.dialog.open(DetailsComponent,{
+      width: '60%',
+      height: '60%',
+      data :movie});
+    dialogRef.componentInstance.updateEvent.subscribe(()=>this.getMoviesList(""));
   }
 
-
-
-  getMoviesList() :void {
-    this.moviesService.getMoviesList()
+  getMoviesList(search:string) :void {
+    this.moviesService.getMoviesList(search)
     .subscribe(movies => {
       this.movies=movies;
       this.dataSource.data = movies as Movies[];
       });
+   }
 
-  }
+  onKeyUp(input:any){
+    this.search=input.target.value;
+    this.getMoviesList(this.search);
+ }
 
   deleteMoviesById(id:number){
     this.moviesService.deleteMovies(id)
     .subscribe(data => {
       console.log(data);
-      this.getMoviesList();
+      this.getMoviesList("");
 
     });
 
   }
 
   navigateToAddMovies() : void{
-    this.router.navigateByUrl('add-movies');
+    this.router.navigateByUrl('movies/add-movies');
   }
 
   ngOnInit(): void {
-    this.getMoviesList();
+    this.getMoviesList("");
   }
 
 }

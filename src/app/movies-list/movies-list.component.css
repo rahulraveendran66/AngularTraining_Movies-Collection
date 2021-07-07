@@ -32,3 +32,22 @@ table {
 .deleteIcon{
   margin-left: 8px;
 }
+
+.searchContainer {
+  margin-left: 2em;
+  width: 94%;
+  background-color: rgba(219, 217, 215, 0.829);
+  padding: 1em 2em 1em 2em ;
+}
+
+.searchText {
+  font-size: x-large;
+}
+
+.searchBar {
+  width: 60%;
+}
+
+.searchIcon{
+  cursor: pointer;
+}

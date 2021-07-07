@@ -1,9 +1,10 @@
+<div class="formContainer">
 <h2>Add New Movies</h2>
 <form (ngSubmit)="onSubmit()">
 <div class="form-group">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="input">
     <mat-label>Enter a Movie name</mat-label>
-    <input matInput placeholder="Movie" class="form-control" id="movie"
+    <input  matInput placeholder="Movie" class="form-control" id="movie"
            required
            [(ngModel)]="movie.mName" name="movie">
   </mat-form-field>
@@ -51,8 +52,9 @@
 <!-- <button type="submit" class="btn btn-success">Submit</button> -->
 </form>
 
-<div class="button">
-  <button mat-raised-button color="accent" (click)='save()'>Save</button>
-  <button mat-raised-button color="accent" (click)='goBack()'>Go Back</button>
+<div class="buttonContainer">
+  <button class="button" mat-raised-button color="accent" (click)='save()' >Save</button>
+  <button class="button" mat-raised-button color="accent" (click)='goBack()'>Go Back</button>
+</div>
 </div>
 

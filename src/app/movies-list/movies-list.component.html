@@ -4,6 +4,15 @@
   <button mat-raised-button color="warn" class="button" (click)=navigateToAddMovies() >Add Movies</button>
 </div>
 
+<div class="searchContainer">
+  <mat-form-field class="searchBar">
+    <mat-label class="searchText">Search</mat-label>
+    <input matInput class="searchText" (keyup)="onKeyUp($event)"  placeholder="Ex:Lucifer">
+    <mat-icon matSuffix class="searchIcon">search</mat-icon>
+  </mat-form-field>
+
+</div>
+
 <div class="tableContainer">
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
 
